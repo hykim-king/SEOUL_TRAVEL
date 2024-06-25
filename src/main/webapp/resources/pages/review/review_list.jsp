@@ -167,7 +167,7 @@
     <main>
         <div class="container">
             <h2>리뷰 목록</h2>
-            
+            <input type="button" value="등록" class="btn btn-primary" onclick="location.href='/SEOUL_TRAVEL/resources/pages/review/review_write.jsp'">
              <%
         ReviewService reviewService = new ReviewService();
         List<ReviewDTO> reviewList = reviewService.getAllReviews();
