@@ -43,6 +43,12 @@
 		const comSeq = document.querySelector("#comSeq");
 		ajaxdoSelectOne();
 		ajaxGetComments(aboardSeq);
+	  updateBtn.addEventListener("click",function(){
+	        ajaxDoUpdate();
+	  });
+          deleteBtn.addEventListener("click",function(){
+	        ajaxDoDelete();
+	   });
 		// 추천 버튼 클릭 시
         
         
@@ -98,6 +104,57 @@
 		            }
 		        });
 		    }
+
+		   function ajaxDoUpdate(){
+        if(!confirm('수정 하시겠습니까?')){
+            return;
+        }
+             $.ajax({
+                 type: "text",
+                 url: "/SEOUL_TRAVEL/review/review.do",
+                 url: "doUpdate",
+                 data: {
+                	   "work_div": "doUpdate",
+                     aboardSeq: aboardSeq,
+                     title: title,
+                     comments: comments
+                 },
+                 success: function(response) {
+                         alert("리뷰가 성공적으로 수정되었습니다.");
+                         location.reload();
+                 },
+                 error: function() {
+                     alert("에러가 발생했습니다.");
+                 }
+             });
+         });
+         
+         function ajaxDoDelete(){
+             if(!confirm('삭제 하시겠습니까?')){
+                 return;
+             }
+
+             $.ajax({
+                 type: "POST",
+                 url: "/SEOUL_TRAVEL/review/review.do",
+                 datatype: "text",
+                 data: {
+                	   "work_div": "doDelete",
+                     aboardSeq: aboardSeq
+                 },
+                 success: function(response) {
+                     if (response == "success") {
+                         alert("리뷰가 성공적으로 삭제되었습니다.");
+                         window.location.href = "review_list.jsp";
+                     } else {
+                         alert("리뷰 삭제에 실패했습니다.");
+                     }
+                 },
+                 error: function() {
+                     alert("에러가 발생했습니다.");
+                 }
+             });
+         }); 	
 
 		    // 추천 버튼 UI 업데이트 함수
 		    function updateLikeButtonUI() {
