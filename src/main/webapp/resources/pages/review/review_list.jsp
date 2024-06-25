@@ -88,7 +88,7 @@
                         var reviewTitle = $("<td></td>");
                         reviewTitle.addClass("review-comments");
                         var reviewLink = $("<a></a>");
-                        reviewLink.attr("href", "review_detail.jsp?aboardSeq=" + review.aboardSeq);
+                        reviewLink.attr("href", "review_detail.jsp?aboardSeq=" + review.aboardSeq+"userId="+review.userId);
                         reviewLink.text(review.title);
                         reviewTitle.append(reviewLink);
 
