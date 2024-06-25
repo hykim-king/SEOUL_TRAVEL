@@ -77,14 +77,7 @@
     </style>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  <% if(session.getAttribute("user") != null) { %>
-    // 회원상세정보
-    const userInfo = document.createElement('div');
-    userInfo.className = 'user-info';
-    userInfo.innerHTML = '<a href="http://localhost:8080/SEOUL_TRAVEL/resources/pages/admin/admin_list.jsp"><h4>회원상세정보</h4></a>';
-    document.querySelector(".container").appendChild(userInfo);
 
-<<<<<<< HEAD
   <% if(session.getAttribute("user")!=null){ %>
     //로그 아웃   
 	  let logout = document.createTextNode('로그아웃');
@@ -120,9 +113,6 @@ document.addEventListener("DOMContentLoaded", function(){
         },success:function(data){
             console.log("success data:"+data);
             location.reload();
-        },
-        success: function(data){
-          console.log("success data:" + data);
         },
         error: function(data){
           console.log("error:" + data);
