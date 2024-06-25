@@ -205,7 +205,13 @@ public class ReviewController extends HttpServlet implements ControllerV, PLog {
         log.debug("outVO:"+outVO);
 
         request.setAttribute("outVO", outVO);
-		return new JView("/review/review_detail.jsp");
+        
+        Gson gson = new Gson();
+        String json = gson.toJson(outVO);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
+	return null;
     }
 
     @Override
